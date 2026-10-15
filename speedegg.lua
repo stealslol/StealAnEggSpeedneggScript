@@ -1,7 +1,3 @@
--- SWILL: Скрипт для Roblox игры "Steal an Egg" с выбором яиц
--- made by STEALS LOL
-
--- Создание интерфейса
 local player = game.Players.LocalPlayer
 local gui = Instance.new("ScreenGui")
 gui.Name = "StealsLolGUI"
@@ -69,7 +65,6 @@ spawnButton.Font = Enum.Font.SourceSansBold
 spawnButton.TextScaled = true
 spawnButton.Parent = frame
 
--- Получение всех типов яиц в игре
 local petEggsFolder = game:GetService("Workspace"):FindFirstChild("PetEggs")
 local eggTypes = {}
 if petEggsFolder then
@@ -78,7 +73,6 @@ if petEggsFolder then
     end
 end
 
--- Создание чекбоксов для каждого типа яиц
 local checkboxInstances = {}
 local yOffset = 0
 for _, eggName in pairs(eggTypes) do
@@ -99,7 +93,6 @@ for _, eggName in pairs(eggTypes) do
 end
 eggScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, yOffset)
 
--- Функция для установки скорости
 local function setSpeed()
     local speed = tonumber(speedBox.Text)
     if speed then
@@ -107,7 +100,6 @@ local function setSpeed()
     end
 end
 
--- Функция для спавна выбранных яиц
 local function spawnSelectedEggs()
     for eggName, checkbox in pairs(checkboxInstances) do
         if checkbox.BackgroundColor3 == Color3.new(0.1, 0.7, 0.1) then
@@ -119,9 +111,7 @@ local function spawnSelectedEggs()
     end
 end
 
--- Подключение функций к кнопкам
 speedBox.FocusLost:Connect(setSpeed)
 spawnButton.MouseButton1Click:Connect(spawnSelectedEggs)
 
--- Поддержка для телефонов
 gui.ResetOnSpawn = false
